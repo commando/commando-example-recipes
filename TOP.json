@@ -1,0 +1,6 @@
+{
+    "name": "TOP",
+    "interpreter": "bash",
+    "notes": "The **top** program provides a dynamic real-time view of a running system. It can display system summary information as well as a list of tasks currently being managed by the Linux kernel.",
+    "content": "# Run in batch mode and only one iteration\r\ntop -b -n 1"
+}

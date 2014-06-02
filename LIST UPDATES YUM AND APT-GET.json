@@ -1,0 +1,6 @@
+{
+    "name": "LIST UPDATES YUM AND APT-GET",
+    "interpreter": "bash",
+    "notes": "Lists *(but does not update)* packages. Works with both **yum** and **app** package managers.",
+    "content": "apt=`command -v apt-get`\r\nyum=`command -v yum`\r\n\r\nif [ -n \"$apt\" ]; then\r\n    apt-get update\r\n\tapt-get --just-print upgrade\r\nelif [ -n \"$yum\" ]; then\r\n\tyum list updates\r\nelse\r\n    echo \"Err: no path to apt-get or yum\" >&2;\r\n    exit 1;\r\nfi"
+}

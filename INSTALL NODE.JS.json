@@ -1,0 +1,6 @@
+{
+    "name": "INSTALL NODE.JS",
+    "interpreter": "bash",
+    "notes": "Install **node.js** version **0.10.28** from source.",
+    "content": "NODE_VERSION=\"0.10.28\"\r\n\r\ncd \/tmp\r\n\r\nwget --quiet http:\/\/nodejs.org\/dist\/v$NODE_VERSION\/node-v$NODE_VERSION.tar.gz\r\ntar -zxf node-v$NODE_VERSION.tar.gz\r\ncd node-v$NODE_VERSION\r\n.\/configure\r\nmake && make install\r\ncd ..\/\r\nrm -f node-v$NODE_VERSION.tar.gz\r\nrm -rf node-v$NODE_VERSION"
+}

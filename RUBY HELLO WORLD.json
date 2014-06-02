@@ -1,0 +1,6 @@
+{
+    "name": "RUBY HELLO WORLD",
+    "interpreter": "ruby",
+    "notes": "A simple **hello world** recipe in **ruby**.",
+    "content": "class HelloWorld\r\n   def initialize(name)\r\n      @name = name\r\n   end\r\n   def hi\r\n      puts \"Hello #{@name}!\"\r\n   end\r\nend\r\n\r\nhello = HelloWorld.new(\"World\")\r\nhello.hi"
+}

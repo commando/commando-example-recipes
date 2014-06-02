@@ -1,0 +1,6 @@
+{
+    "name": "FREE",
+    "interpreter": "bash",
+    "notes": "**free** displays the total amount of free and used physical and swap memory *(in megabytes)* in the system, as well as the buffers used by the kernel.",
+    "content": "free -m"
+}
