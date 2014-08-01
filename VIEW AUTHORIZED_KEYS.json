@@ -2,5 +2,5 @@
     "name": "VIEW AUTHORIZED_KEYS",
     "interpreter": "bash",
     "notes": "Show public ssh keys that are authorized in `.ssh\/authorized_keys` or `.ssh\/authorized_keys2`.",
-    "content": "if [ -f ~\/.ssh\/authorized_keys ]; then\r\n\tcat ~\/.ssh\/authorized_keys\r\nelif [ -f ~\/.ssh\/authorized_keys2 ]; then\r\n\tcat ~\/.ssh\/authorized_keys2\r\nfi"
+    "content": "if [ -f ~\/.ssh\/authorized_keys ]; then\r\n  cat ~\/.ssh\/authorized_keys\r\nelif [ -f ~\/.ssh\/authorized_keys2 ]; then\r\n  cat ~\/.ssh\/authorized_keys2\r\nfi"
 }

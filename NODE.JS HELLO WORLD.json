@@ -2,5 +2,5 @@
     "name": "NODE.JS HELLO WORLD",
     "interpreter": "node.js",
     "notes": "A simple **hello world** recipe in **node.js**.",
-    "content": "function helloWorld() {\r\n\tconsole.log('Hello World!');\r\n}\r\n\r\nhelloWorld();"
+    "content": "function helloWorld() {\r\n  console.log('Hello World!');\r\n}\r\n\r\nhelloWorld();"
 }
