@@ -1,0 +1,6 @@
+{
+    "name": "DEPLOY - GIT CLONE OR PULL",
+    "interpreter": "bash",
+    "notes": "Automatically clone or pull a git repository `GIT_URL`. If the directory `REPO_PATH` does not exist it does a clone, otherwise it does a pull.\r\n\r\n**BASE_PATH:** The full path to the **base** directory where the repository exists.\r\n\r\n**REPO_PATH:** The full path to the repository *(including the repository itself)*.\r\n\r\n**GIT_URL:** A git url *(can be ssh or http format)*.",
+    "content": "BASE_PATH=\"\/srv\/www\"\r\nREPO_PATH=\"\/srv\/www\/repo\"\r\nGIT_URL=\"https:\/\/github.com\/username\/repo.git\"\r\n\r\nif [ -d \"$REPO_PATH\" ]; then\r\n  cd $REPO_PATH\r\n  git pull --quiet\r\n  echo \"git pull successfully ran\";\r\nelse\r\n  cd $BASE_PATH\r\n  git clone $GIT_URL --quiet\r\n  echo \"git clone successfully ran\"\r\nfi"
+}
