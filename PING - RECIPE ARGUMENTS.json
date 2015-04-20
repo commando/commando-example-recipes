@@ -1,0 +1,6 @@
+{
+    "name": "PING - RECIPE ARGUMENTS",
+    "interpreter": "bash",
+    "notes": "Recipe arguments are extremely powerful, and allow you to dynamically pass values into recipes at execution-time. You specify recipe arguments with the following syntax in a recipe:\r\n\r\n    {{ arg: $unique_key }}\r\n\r\nThen at execution-time, we will prompt for the value of each argument and inject them into the recipe.",
+    "content": "ping -c 1 {{ arg: $host }}"
+}
