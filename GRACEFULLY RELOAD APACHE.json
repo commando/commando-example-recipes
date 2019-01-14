@@ -1,0 +1,6 @@
+{
+    "name": "GRACEFULLY RELOAD APACHE",
+    "interpreter": "bash",
+    "notes": "### Description\r\n\r\nReload apache gracefully.\r\n\r\n### Requirements\r\n\r\n- Root account",
+    "content": "if [[ $EUID -ne 0 ]]; then\r\n   echo \"this script must be run as root\" 1>&2;\r\n   exit 1\r\nfi\r\n\r\nif [ -x \"$(command -v apache)\" ]; then\r\n   service apache graceful\r\nelif [ -x \"$(command -v apache2)\" ]; then\r\n   service apache2 graceful\r\nelse\r\n   echo \"apache not found\" 1>&2;\r\n   exit 1\r\nfi"
+}

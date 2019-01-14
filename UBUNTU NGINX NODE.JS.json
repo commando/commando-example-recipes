@@ -1,0 +1,6 @@
+{
+    "name": "UBUNTU NGINX NODE.JS",
+    "interpreter": "bash",
+    "notes": "### Description\r\n\r\nInstalls and configures **NGINX** with **Node.js 10.15.0** using **NVM**. **Yarn** package manager is also installed. Run your Node.js applications under the `node` user account.\r\n\r\n### Requirements\r\n\r\n- Ubuntu 16.04\r\n- Root account",
+    "content": "if [[ $EUID -ne 0 ]]; then\r\n   echo \"this script must be run as root\" 1>&2;\r\n   exit 1\r\nfi\r\n\r\nif [ ! -e \/etc\/os-release ] || [ $(awk -F= '\/^NAME\/{print $2}' \/etc\/os-release) != '\"Ubuntu\"' ]; then\r\n  echo \"this script must be run on Ubuntu\" 1>&2;\r\n  exit 1\r\nfi\r\n\r\nexport DEBIAN_FRONTEND=noninteractive\r\nexport APT_LISTCHANGES_FRONTEND=none\r\n\r\nsudo useradd --user-group --create-home node\r\n\r\napt-get update\r\napt -y autoremove\r\napt-get -y install nginx\r\nsystemctl enable nginx\r\n\r\nsu - node <<'EOF'\r\n    curl -o- https:\/\/raw.githubusercontent.com\/creationix\/nvm\/v0.33.11\/install.sh | bash\r\n    export NVM_DIR=\"\/home\/node\/.nvm\"\r\n    [ -s \"$NVM_DIR\/nvm.sh\" ] && \\. \"$NVM_DIR\/nvm.sh\"\r\n    nvm install 10.15.0\r\n    nvm use 10.15.0\r\n    nvm alias default node\r\n    npm install -g npm\r\n    curl -o- -L https:\/\/yarnpkg.com\/install.sh | bash\r\n    source \"\/home\/node\/.zshrc\"\r\nEOF"
+}

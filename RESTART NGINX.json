@@ -1,0 +1,6 @@
+{
+    "name": "RESTART NGINX",
+    "interpreter": "bash",
+    "notes": "### Description\r\n\r\nReload NGINX gracefully.\r\n\r\n### Requirements\r\n\r\n- Root account",
+    "content": "if [[ $EUID -ne 0 ]]; then\r\n   echo \"this script must be run as root\" 1>&2;\r\n   exit 1\r\nfi\r\n\r\nif ! [ -x \"$(command -v nginx)\" ]; then\r\n   service nginx reload\r\nelse\r\n   echo \"nginx not found\" 1>&2;\r\n   exit 1\r\nfi"
+}

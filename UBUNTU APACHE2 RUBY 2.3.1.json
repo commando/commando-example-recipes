@@ -1,0 +1,6 @@
+{
+    "name": "UBUNTU APACHE2 RUBY 2.3.1",
+    "interpreter": "bash",
+    "notes": "### Description\r\n\r\nInstalls and configures **Apache2** with **Ruby 2.3.1** using **mod-passenger** on **Ubuntu 16.04**.\r\n\r\n### Requirements\r\n\r\n- Ubuntu 16.04\r\n- Root account",
+    "content": "if [[ $EUID -ne 0 ]]; then\r\n   echo \"this script must be run as root\" 1>&2;\r\n   exit 1\r\nfi\r\n\r\nif [ ! -e \/etc\/os-release ] || [ $(awk -F= '\/^NAME\/{print $2}' \/etc\/os-release) != '\"Ubuntu\"' ]; then\r\n  echo \"this script must be run on Ubuntu\" 1>&2;\r\n  exit 1\r\nfi\r\n\r\nexport DEBIAN_FRONTEND=noninteractive\r\nexport APT_LISTCHANGES_FRONTEND=none\r\n\r\napt-get update\r\napt -y autoremove\r\n\r\napt-get -y install apache2 ruby\r\nln -s \/usr\/bin\/ruby2.3 \/usr\/local\/bin\/ruby\r\nsystemctl enable apache2\r\n\r\napt-get -y install dirmngr gnupg\r\napt-key adv --keyserver hkp:\/\/keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7\r\napt-get -y install apt-transport-https ca-certificates\r\n\r\necho \"deb https:\/\/oss-binaries.phusionpassenger.com\/apt\/passenger xenial mai\" > \/etc\/apt\/sources.list.d\/passenger.list\r\nchmod 600 \/etc\/apt\/sources.list.d\/passenger.list\r\napt-get update\r\n\r\napt-get -y install libapache2-mod-passenger\r\n\r\nsystemctl start apache2"
+}
